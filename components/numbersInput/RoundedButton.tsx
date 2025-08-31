@@ -3,15 +3,18 @@ import { Pressable, StyleSheet, Text, View } from 'react-native'
 type Props = {
     value: string
     onPress: (value: string) => void
+    color?: string
 }
 
-const RoundedButton = ({ value, onPress }: Props) => {
+const RoundedButton = ({ value, onPress, color }: Props) => {
+    const checkedColor = color !== "red" ? "#fff" : "#c40606ff";
+
     return (
-        <View style={styles.roundedButtonContainer}>
+        <View style={[styles.roundedButtonContainer, { borderColor: checkedColor }]}>
             <Pressable style={styles.button} onPress={() => onPress(value)}>
-                <Text style={styles.buttonText} >{value}</Text>
+                <Text style={[styles.buttonText, { color: checkedColor }]} >{value}</Text>
             </Pressable>
-        </View>
+        </View >
     )
 }
 
@@ -35,7 +38,7 @@ const styles = StyleSheet.create({
     },
     buttonText: {
         color: '#fff',
-        fontSize: 18,
+        fontSize: 22,
         fontWeight: 'bold',
         textAlign: 'center',
     },

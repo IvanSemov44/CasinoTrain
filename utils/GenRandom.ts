@@ -6,10 +6,11 @@ export interface Positions {
     SixLine: number;
 }
 
-
-export function randomNumber(min: number, max: number) {
+export function randomNumber(min: number, max: number): number {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
+//Create new random numbers for each position and return positions and total count
 export function newNumbers(amountsOfChips: number): [Positions, number] {
     const positions: Positions = {
         StraightUp: 0,
@@ -23,8 +24,10 @@ export function newNumbers(amountsOfChips: number): [Positions, number] {
     for (let i = 0; i < 4; i++) {
         const currenDraw = randomNumber(1, amountsOfChips);
         amountsOfChips -= currenDraw;
+
         if (amountsOfChips < 0)
             break;
+
         currentResult.push(currenDraw);
     }
 
@@ -34,11 +37,6 @@ export function newNumbers(amountsOfChips: number): [Positions, number] {
     positions.Street = currentResult[3] || 0;
     positions.SixLine = amountsOfChips < 0 ? 0 : amountsOfChips;
 
-    // positions.StraightUp *= 35
-    // positions.Split *= 17
-    // positions.Corner *= 8
-    // positions.Street *= 11
-    // positions.SixLine *= 5
     const total =
         (positions.StraightUp * 35) +
         (positions.Split * 17) +

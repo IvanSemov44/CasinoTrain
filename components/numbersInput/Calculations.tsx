@@ -1,9 +1,12 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native'
-import { useEffect, useState } from 'react'
+import { use, useEffect, useState } from 'react'
 import { newNumbers, Positions } from '@/utils/GenRandom';
+import Ionicons from '@expo/vector-icons/build/Ionicons';
 
 type Props = {
-    setTotal: (value: string) => void
+    setTotal: (value: string) => void,
+    chips: number,
+    checkValue: boolean
 }
 
 const initialStateOfPositions: Positions = {
@@ -14,7 +17,7 @@ const initialStateOfPositions: Positions = {
     SixLine: 0
 };
 
-const Calculations = ({ setTotal }: Props) => {
+const Calculations = ({ setTotal, chips, checkValue }: Props) => {
     const [numbers, setNumbers] = useState<Positions>(initialStateOfPositions);
 
     useEffect(() => {
@@ -22,11 +25,15 @@ const Calculations = ({ setTotal }: Props) => {
     }, [])
 
     const onReset = () => {
-        const [newNumber, total] = newNumbers(3);
+        const [newNumber, total] = newNumbers(chips);
 
         setNumbers(newNumber);
         setTotal(total.toString());
     }
+
+    useEffect(() => {
+        onReset();
+    }, [chips, checkValue===true])
 
     return (
         <View>
@@ -39,6 +46,11 @@ const Calculations = ({ setTotal }: Props) => {
             <Pressable onPress={onReset}>
                 <Text style={styles.text}>Reset</Text>
             </Pressable>
+
+            {checkValue ?
+                <Ionicons name="checkmark" size={24} color="white" /> :
+                <Ionicons name="close" size={24} color="white" />
+            }
         </View>
     )
 }
