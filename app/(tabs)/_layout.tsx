@@ -30,6 +30,25 @@ const TabLayout = () => {
                     <Ionicons name={focused ? "information-circle" : "information-circle-outline"} size={24} color={color} />
                 )
             }} />
+            <Tabs.Screen name="quizzes" options={{
+                title: "Quizzes", tabBarIcon: ({ color, focused, size }) => (
+                    <Ionicons name={focused ? "home-sharp" : "home-outline"} size={size} color={color} />
+                )
+            }} />
+            <Tabs.Screen name="leaderboard" options={{
+                title: "Leaderboard",
+                tabBarIcon: ({ color, focused, size }) => (
+                    <Ionicons name={focused ? "trophy-sharp" : "trophy-outline"} size={size} color={color} />
+                )
+            }}
+            />
+            <Tabs.Screen name="profile" options={{
+                title: "Profile",
+                tabBarIcon: ({ color, focused, size }) => (
+                    <Ionicons name={focused ? "person-sharp" : "person-outline"} size={size} color={color} />
+                )
+            }}
+            />
         </Tabs>
     )
 }

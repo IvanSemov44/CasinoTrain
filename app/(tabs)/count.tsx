@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Pressable, StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import Keyboard from '@/components/numbersInput/Keyboard'
 import Calculations from '@/components/numbersInput/Calculations'
 import ModalSettingsChips from '@/components/numbersInput/ModalSettingsChips'
@@ -23,10 +23,9 @@ const Count = () => {
 
     return (
         <View style={styles.container}>
-            <Calculations setTotal={handleTotalUpdate} chips={chips} checkValue={checkValue}/>
+            <Calculations setTotal={handleTotalUpdate} chips={chips} checkValue={checkValue} />
             <Keyboard onCheck={handleCheck} />
-            <ModalSettingsChips setChips={setChips}/>
-
+            <ModalSettingsChips setChips={setChips} />
         </View>
     )
 }
