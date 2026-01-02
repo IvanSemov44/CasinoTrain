@@ -1,10 +1,18 @@
-import { StyleSheet, Text, View } from 'react-native'
+import RouletteTableWithChips from '@/components/Roulette/RouletteTableWithChips'
+import React from 'react'
+import { StyleSheet } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 const AboutScreen = () => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>AboutScreen</Text>
-    </View>
+    // <View style={styles.container}>
+    //   <RouletteTable/>
+    //   <Button label={''}/>
+    // </View>
+    <SafeAreaView style={{ flex: 1 }}>
+      {/* <StatusBar barStyle="light-content" /> */}
+      <RouletteTableWithChips />
+    </SafeAreaView>
   )
 }
 

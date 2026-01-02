@@ -9,7 +9,8 @@ interface QuizProgressProps {
 
 const QuizProgress = ({
     currentQuestion,
-    totalQuestions, score
+    totalQuestions, 
+    score
 }: QuizProgressProps) => {
     return (
         <View style={styles.container}>
@@ -25,7 +26,6 @@ const QuizProgress = ({
                         styles.progressFill,
                         { width: `${(currentQuestion / totalQuestions) * 100}%` }
                     ]}>
-
                 </View>
             </View>
         </View>

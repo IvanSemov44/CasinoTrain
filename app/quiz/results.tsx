@@ -1,9 +1,8 @@
-import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useEffect } from 'react'
+import { ScrollView, StyleSheet, Text, TouchableOpacity } from 'react-native'
 import { useLocalSearchParams, useRouter } from 'expo-router'
 import { useQuiz } from '@/context/QuizContext';
 import { quizzes } from '@/constants/data';
-import { get } from 'react-native/Libraries/TurboModule/TurboModuleRegistry';
 import ResultSummary from '@/components/quiz/ResultSummary';
 
 const ResultsScreen = () => {
@@ -16,7 +15,6 @@ const ResultsScreen = () => {
   const numericTimeSpent = Number(timeSpent);
 
   const quiz = quizzes.find(q => q.id === quizId);
-
 
   useEffect(() => {
     if (quizId && typeof quizId === 'string') {
